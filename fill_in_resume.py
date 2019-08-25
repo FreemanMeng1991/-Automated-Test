@@ -189,7 +189,8 @@ except:
 	driver.find_element_by_id("basedetail_edit").click()
 	driver.find_element_by_class_name("mbox").click()
 
-	#婚姻状况 0-未婚 1-已婚
+	#选择婚姻状况
+	#这是使用ActionChains实现下拉列表选取的一个例子
 	driver.find_element_by_id("base_marriage_list").click()
 	option = driver.find_element_by_xpath("//*[@id='base_marriage_list']/div/span[2]")
 	ac = ActionChains(driver)
@@ -198,8 +199,11 @@ except:
 	ac.perform()
 	time.sleep(0.5)
 
+	driver.find_element_by_id("base_idcard").clear() #先清空，防止在尾部增量填写
 	driver.find_element_by_id("base_idcard").send_keys("410205197901230519")
+
 	
+	#ActionChains操作下拉列表
 	driver.find_element_by_id("base_politicsstatus_list").click()
 	option = driver.find_element_by_xpath("//*[@id='base_politicsstatus_list']/div/span[2]")
 	ac = ActionChains(driver)
@@ -209,6 +213,7 @@ except:
 	time.sleep(0.5)
 
 	driver.find_element_by_id("base_stature").send_keys("178")
+	driver.find_element_by_id("base_address").clear()#先清空，防止在尾部增量填写
 	driver.find_element_by_id("base_address").send_keys("开封市示范区第五大街北段")
 	driver.find_element_by_id("base_stature").send_keys("178")
 
@@ -239,7 +244,7 @@ except:
 
 	driver.find_element_by_id("edu_schoolname").send_keys("商丘建桥大学")
 	
-	#文化程度
+	#选择文化程度：另一种点选下拉列表的方法，这种更为直接
 	driver.find_element_by_xpath("//*[@id='edu_degree_list']/input").click()
 	time.sleep(0.5)
 	driver.find_element_by_xpath("//*[@id='edu_degree_list']/div/span[7]").click()
@@ -269,3 +274,18 @@ except:
 
 	driver.find_element_by_id("edu_describe").send_keys("我在搬砖")
 	driver.find_element_by_id("education_save_").click()
+
+	driver.find_element_by_id("additionattach_new").click()
+	driver.find_element_by_id("atta_name").send_keys("盗墓笔记")
+	driver.find_element_by_id("atta_uploadtype_list").click()
+	driver.find_element_by_xpath("//*[@id='atta_uploadtype_list']/div/span[1]").click()
+	driver.find_element_by_id("atta_uploadfile").send_keys(r"C:\Users\FREEMAN\Desktop\test.xls")
+	driver.find_element_by_id("atta_describe").send_keys("战国帛书")
+	
+
+	
+
+
+	
+	
+	
